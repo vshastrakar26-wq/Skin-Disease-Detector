@@ -16,16 +16,22 @@ This project uses machine learning techniques to detect different types of skin 
 ### 🏠 Home Page
 ![Home Page](images/home.png)
 
+### 🏠 Home Page
+![Home Page](images/home.png)
+
 ### 🔍 Detection Result
 ![Detection Result](images/detection.png)
 ![Detection Result](images/detection1.png)
 
-### 🏠 Info and Feature Page
+### ℹ️ Info and Feature Page
 ![Info Page](images/info.png)
 ![Features](images/feat.png)
 
+
 ## 📊 Dataset
 Images of various skin diseases collected from publicly available medical datasets.
+https://www.kaggle.com/datasets/ismailpromus/skin-diseases-image-dataset/data
+
 
 ## 🚀 How to Run
 1. Install dependencies:  
