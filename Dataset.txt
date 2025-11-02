@@ -1,0 +1,4 @@
+Datasets link
+
+https://dermnetnz.org/images
+https://www.kaggle.com/datasets/ismailpromus/skin-diseases-image-dataset/data

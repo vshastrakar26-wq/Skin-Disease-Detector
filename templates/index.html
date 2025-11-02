@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SkinCare Detector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* --- COPY YOUR EXISTING CSS HERE --- */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #3FD0C9, #2EAF7D);
+            color: #02353C;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: #02353C;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        .logo span { color: #C1F6ED; }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li { font-weight: 600; cursor: pointer; transition: color 0.3s; }
+        nav ul li:hover { color: #C1F6ED; }
+
+        .btn-detect {
+            background: #02353C;
+            color: white;
+            padding: 0.7rem 1.6rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-detect:hover {
+            background: #449342;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            color: #02353C;
+            flex-grow: 1; /* Allows the hero section to take up available space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center the content vertically */
+            align-items: center;
+        }
+
+        .hero img {
+            width: 90px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            color: #02353C;
+        }
+
+        /* --- STYLES FOR THE 'START DETECTION' BUTTON (REPURPOSING THE EXISTING BUTTON STYLE) --- */
+        .start-detection-link {
+            background: #02353C;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem; /* Slightly larger for main button */
+            font-weight: 600;
+            text-decoration: none; /* Important to remove underline from link */
+            transition: 0.3s;
+            display: inline-block; /* Allows padding and width to work */
+            margin-top: 1.5rem; /* Add some space below the text */
+        }
+        .start-detection-link:hover {
+            background: #449342;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 0.9rem;
+        }
+
+        /* The following styles are no longer needed on the landing page, 
+           but you'll need them on detect.html */
+        /* form, input[type="file"], button, .result, .preview img {} */
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">SkinCare<span>Detector</span></div>
+        <ul>
+            <li>About</li>
+            <li>Features</li>
+            <li><a href="{{ url_for('home') }}" class="btn-detect">Home</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png" alt="icon">
+        <h1>Welcome to **SkinCare Detector**</h1>
+        <p>Upload an image and get an instant detection result with detailed information on possible skin conditions.</p>
+
+        <a href="{{ url_for('detect') }}" class="start-detection-link">
+            Start Detection
+        </a>
+
+    </section>
+
+    <footer>
+        © 2025 SkinCare Detector — Empowering skin health through technology
+    </footer>
+</body>
+</html>

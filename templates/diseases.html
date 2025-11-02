@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ disease }} | Skin Disease Info</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #C1F6ED, #2EAF7D);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #02353C;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #02353C;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    h2 {
+      color: #2EAF7D;
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    p {
+      color: #333;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background: #2EAF7D;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #24986a;
+    }
+
+    footer {
+      background: #02353C;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>Skin Disease Information</header>
+
+  <div class="container">
+    <h2>{{ disease }}</h2>
+    <p>{{ description }}</p>
+
+    <a href="{{ url_for('home') }}" class="back-btn">← Back to Detection</a>
+  </div>
+
+  <footer>
+    ⚕️ For medical advice, consult a certified dermatologist. This information is for educational purposes only.
+  </footer>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detect | SkinCare Detector</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #3FD0C9, #2EAF7D);
+      color: #02353C;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ---------- Navbar ---------- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      color: #02353C;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: #C1F6ED;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    nav ul li:hover {
+      color: #C1F6ED;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #02353C;
+    }
+
+    /* ---------- Main Card ---------- */
+    .main-container {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .content-card {
+      background: white;
+      padding: 40px;
+      max-width: 550px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .content-card:hover {
+      transform: translateY(-3px);
+    }
+
+    #drop-area {
+      border: 3px dashed #2EAF7D;
+      border-radius: 12px;
+      padding: 50px 30px;
+      background: #EFFFFD;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.3s;
+      margin-bottom: 25px;
+    }
+
+    #drop-area:hover {
+      background: #C1F6ED;
+      border-color: #02353C;
+    }
+
+    #drop-area p {
+      font-size: 1.1rem;
+      color: #02353C;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    #file-input {
+      display: none;
+    }
+
+    button {
+      padding: 12px 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: #02353C;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    button:hover {
+      background: #2EAF7D;
+      transform: translateY(-2px);
+    }
+
+    #preview {
+      max-width: 100%;
+      height: auto;
+      max-height: 250px;
+      margin-top: 20px;
+      border-radius: 10px;
+      border: 3px solid #2EAF7D;
+      display: none;
+      object-fit: contain;
+    }
+
+    .result {
+      margin-top: 25px;
+      background: #E8F5E9;
+      color: #2E7D32;
+      border-left: 5px solid #4CAF50;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: inline-block;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.2);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">SkinCare<span>Detector</span></div>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+      <li><a href="{{ url_for('info', disease='Eczema') }}">Info</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-container">
+    <div class="content-card">
+      <h2>Upload an Image for Detection</h2>
+      <p style="margin-bottom: 25px;">Our system analyzes the image to identify common skin conditions.</p>
+
+      <form action="/predict" method="POST" enctype="multipart/form-data">
+        <div id="drop-area" onclick="document.getElementById('file-input').click();">
+          <p>Click or drag an image here</p>
+          <input type="file" id="file-input" name="file" accept="image/*" required onchange="previewImage(event)">
+        </div>
+
+        <img id="preview" src="#" alt="Image Preview">
+
+        <button type="submit">Detect</button>
+      </form>
+
+      {% if prediction %}
+        <div class="result">{{ prediction }}</div>
+      {% endif %}
+
+      {% if info_link %}
+        <div style="margin-top:15px;">
+          <a href="{{ info_link }}" style="color:#02353C; font-weight:600; text-decoration:none;">ℹ️ More Info</a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer>
+    Disclaimer: This system is for educational use only and not for medical diagnosis.
+  </footer>
+
+  <script>
+    function previewImage(event) {
+      const reader = new FileReader();
+      reader.onload = function() {
+        const output = document.getElementById('preview');
+        output.src = reader.result;
+        output.style.display = 'block';
+      };
+      if (event.target.files && event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+      }
+    }
+  </script>
+
+</body>
+</html>
