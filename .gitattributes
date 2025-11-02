@@ -1,0 +1,21 @@
+# Ignore Jupyter Notebook files from language stats
+*.ipynb linguist-vendored
+
+# Ignore model and binary files
+*.h5 linguist-vendored
+*.pkl linguist-vendored
+
+# Ignore dataset and uploads
+uploads/* linguist-vendored
+*.txt linguist-vendored
+
+# Ignore images
+images/* linguist-vendored
+*.png linguist-vendored
+*.jpg linguist-vendored
+
+# Keep these for language analysis
+*.py linguist-detectable=true
+*.html linguist-detectable=true
+*.css linguist-detectable=true
+*.js linguist-detectable=true
