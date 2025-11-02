@@ -35,6 +35,5 @@ https://www.kaggle.com/datasets/ismailpromus/skin-diseases-image-dataset/data
 
 ## 🚀 How to Run
 1. Install dependencies:  
-   ```bash
 2.  pip install -r requirements.txt
 3. py main.py
