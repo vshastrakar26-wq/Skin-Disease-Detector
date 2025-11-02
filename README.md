@@ -13,6 +13,17 @@ This project uses machine learning techniques to detect different types of skin 
 - **Backend:** Flask (Python)  
 - **Libraries:** TensorFlow, scikit-learn, OpenCV, NumPy  
 
+### 🏠 Home Page
+![Home Page](images/home.png)
+
+### 🔍 Detection Result
+![Detection Result](images/detection.png)
+![Detection Result](images/detection1.png)
+
+### 🏠 Info and Feature Page
+![Info Page](images/info.png)
+![Features](images/feat.png)
+
 ## 📊 Dataset
 Images of various skin diseases collected from publicly available medical datasets.
 
