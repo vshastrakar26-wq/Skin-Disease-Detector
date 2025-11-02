@@ -13,8 +13,6 @@ This project uses machine learning techniques to detect different types of skin 
 - **Backend:** Flask (Python)  
 - **Libraries:** TensorFlow, scikit-learn, OpenCV, NumPy  
 
-### 🏠 Home Page
-![Home Page](images/home.png)
 
 ### 🏠 Home Page
 ![Home Page](images/home.png)
